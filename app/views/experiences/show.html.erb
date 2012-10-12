@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Compagny:</b>
+  <%= @experience.compagny %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @experience.website %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @experience.location %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @experience.position %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @experience.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @experience.end_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @experience.description %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%= @experience.keywords %>
+</p>
+
+<p>
+	<b>Linked Picture : </b>
+	<% @experience.pictures.each do |picture| %>
+	<br>
+	<b>Image : </b>
+	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %><br>
+	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>  
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_experience_path(@experience)  unless !logged_in? %> |
+<%= link_to 'Back', experiences_path %>

@@ -1,0 +1,84 @@
+<%= form_for(@experience) do |experience_form| %>
+<% if @experience.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+
+	<ul>
+		<% @experience.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= experience_form.label :compagny %>
+	<br />
+	<%= experience_form.text_field :compagny %>
+</div>
+<div class="field">
+	<%= experience_form.label :website %>
+	<br />
+	<%= experience_form.text_field :website %>
+</div>
+<div class="field">
+	<%= experience_form.label :location %>
+	<br />
+	<%= experience_form.text_field :location %>
+</div>
+<div class="field">
+	<%= experience_form.label :position %>
+	<br />
+	<%= experience_form.text_field :position %>
+</div>
+<div class="field">
+	<%= experience_form.label :start_date %>
+	<br />
+	<%= experience_form.date_select :start_date %>
+</div>
+<div class="field">
+	<%= experience_form.label :end_date %>
+	<br />
+	<%= experience_form.date_select :end_date %>
+</div>
+<div class="field">
+	<%= experience_form.label :description %>
+	<br />
+	<%= experience_form.text_area :description %>
+</div>
+<div class="field">
+	<%= experience_form.label :keywords %>
+	<br />
+	<%= experience_form.text_field :keywords %>
+</div>
+
+<div id="pictures">
+	<%= render :partial => 'picture_relations/form', :locals => {:form => experience_form} %>
+	<% if @pictures %>
+	<div id="ImageList">
+		<table>
+			<tr>
+				<th>Legend</th>
+				<th>Picture</th>
+				<th>Add</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @pictures.each do |picture| %>
+			<tr>
+				<td><%= picture.legend %></td>
+				<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+				<td><%= link_to_add_picture(experience_form, picture) %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<% end %>
+</div>
+
+<div class="actions">
+	<%= experience_form.submit %>
+</div>
+<% end %>

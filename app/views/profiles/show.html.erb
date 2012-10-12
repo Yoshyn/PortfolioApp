@@ -1,0 +1,59 @@
+<h1>In a NutShell </h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <b>First Name :</b>
+  <%= @profile.firstname %>
+</p>
+
+<p>
+  <b>Email :</b>
+  <%= @profile.email %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @profile.description %>
+</p>
+
+<p>
+  <b>More about me:</b>
+  <%= @profile.hobby %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @profile.location %>
+</p>
+
+<p>
+  <b>Github link:</b>
+  <%= @profile.git_link %>
+</p>
+
+<p>
+  <b>Facebook link:</b>
+  <%= @profile.fb_link %>
+</p>
+
+<p>
+  <b>Twitter link:</b>
+  <%= @profile.twitter_link %>
+</p>
+
+<p>
+  <b>Linkedin link:</b>
+  <%= @profile.lkdIn_link %>
+</p>
+
+<p>
+  <b>Avatar:</b>
+  <%= image_tag(@profile.picture.url, :width => 100) if @profile.picture.present? %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile)  unless !logged_in? %>

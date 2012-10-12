@@ -1,0 +1,32 @@
+<%= content_for :active_educations, "class=active" %>
+
+<h1>Educations</h1>
+
+<div class="accordion">
+	<% @educations.each do |education| %>
+	<div id="tab-<%= education.school %>">
+		<a href="#tab-<%= education.school %>" class="tab"><%= education.school %></a>
+		<div class="content">
+			<em class="bullet"></em><span>Start : <%= education.start_date %></span><em class="bullet"></em><span> End : <%= education.end_date %></span>
+			<% if logged_in? %>
+				<em class="bullet"></em><span><%= link_to 'Edit', edit_education_path(education) %></span><em class="bullet"></em><span><%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></span>
+			<% end %>
+			<p>
+				<%= education.description %>
+			</p>
+			<p>
+				<%= education.website %>
+			</p>
+			<h1>Keywords : <%= education.keywords %></h1>
+			<ul>
+				<% education.pictures.each do |education| %>
+				<li><%= image_tag(education.url, :width => 100) if education.url.present? %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<% end %>
+</div>
+<br />
+
+<%= link_to 'New Education', new_education_path  unless !logged_in? %>

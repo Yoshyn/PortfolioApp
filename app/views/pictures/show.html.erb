@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Legend:</b>
+  <%= @picture.legend %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @picture.url %>
+</p>
+
+<p>
+  <%= image_tag(@picture.url) if @picture.url.present? %>
+</p>
+
+
+<%= link_to 'Edit', edit_picture_path(@picture)  unless !logged_in? %> |
+<%= link_to 'Back', pictures_path %>

@@ -1,0 +1,19 @@
+<table>
+	<caption>
+		Related Picture List
+	</caption>
+	<tr>
+		<th>Picture Id</th>
+		<th>Remove?</th>
+	</tr>
+	<%= form.fields_for :picture_relations do |picture_form| %>
+	<% picture = Picture.find(picture_form.object.picture_id) %>
+	<tr>
+		<td><%= image_tag(picture.url, :width => 100) if picture.url.present? %> </td>
+		<% unless picture_form.object.nil? || picture_form.object.new_record? %>
+			<td><%= picture_form.check_box :_destroy %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+

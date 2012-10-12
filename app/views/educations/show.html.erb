@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>School:</b>
+  <%= @education.school %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @education.website %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @education.location %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @education.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @education.end_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @education.description %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%= @education.keywords %>
+</p>
+
+<p>
+	<b>Linked Picture : </b>
+	<% @education.pictures.each do |picture| %>
+	<br>
+	<b>Image : </b>
+	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %><br>
+	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>  
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_education_path(@education)  unless !logged_in? %> |
+<%= link_to 'Back', educations_path %>

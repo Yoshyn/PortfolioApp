@@ -1,0 +1,63 @@
+<%= form_for(@project) do |project_form| %>
+<% if @project.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+	<ul>
+		<% @project.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= project_form.label :title %>
+	<%= project_form.text_field :title %>
+</div>
+<div class="field">
+	<%= project_form.label :status %>
+	<%= project_form.select :status, ["Finish","In Progress","Aborted"]%>
+</div>
+<div class="field">
+	<%= project_form.label :website %>
+	<%= project_form.text_field :website %>
+</div>
+<div class="field">
+	<%= project_form.label :description %>
+	<%= project_form.text_area :description %>
+</div>
+<div class="field">
+	<%= project_form.label :technologies %>
+	<%= project_form.text_field :technologies %>
+</div>
+
+<div id="pictures">
+	<%= render :partial => 'picture_relations/form', :locals => {:form => project_form} %>
+	<% if @pictures %>
+	<div id="ImageList">
+		<table>
+			<tr>
+				<th>Legend</th>
+				<th>Picture</th>
+				<th>Add</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @pictures.each do |picture| %>
+			<tr>
+				<td><%= picture.legend %></td>
+				<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+				<td><%= link_to_add_picture(project_form, picture) %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<% end %>
+</div>
+<div class="actions">
+	<%= project_form.submit %>
+</div>
+<% end %>

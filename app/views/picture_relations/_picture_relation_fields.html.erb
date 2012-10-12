@@ -1,0 +1,5 @@
+<div class="fields">
+  <%= image_tag(p_url, :width => 50) if p_url.present? %>
+  <%= form.hidden_field :picture_id, :value => p_id %>
+  <%= link_to_remove_picture "Remove this picture", form %>
+</div>

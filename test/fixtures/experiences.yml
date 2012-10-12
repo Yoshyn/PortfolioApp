@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  compagny: MyString
+  website: MyString
+  position: MyString
+  start_date: 2012-10-11
+  end_date: 2012-10-11
+  description: MyText
+  keywords: MyString
+
+two:
+  compagny: MyString
+  website: MyString
+  position: MyString
+  start_date: 2012-10-11
+  end_date: 2012-10-11
+  description: MyText
+  keywords: MyString

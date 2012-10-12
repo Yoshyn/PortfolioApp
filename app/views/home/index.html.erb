@@ -1,0 +1,28 @@
+<%= content_for :active_home, "class=active" %>
+<p id="notice">
+	<%= notice %>
+</p>
+<div class="hero-unit">
+	<h2><%= @profile.title %></h2>
+	<p>
+		<%= truncate(@profile.description, :length => 400, :separator => ' ') %>
+	</p>
+	<p>
+		<%= link_to 'Learn more »', @profile, :class => "btn btn-primary btn-large" %>
+	</p>
+</div>
+
+<h1>Lasts projects : </h1>
+<div class="row">
+	<% @projects.each do |project| %>
+	<div class="span4">
+		<h3><%= truncate(project.title, :length => 20) %></h3>
+		<p>
+			<%= truncate(project.description, :length => 240) %>
+		</p>
+		<p>
+			<%= link_to 'View details »', projects_path(:anchor => 'tab-'+project.title), :class => "btn" %>
+		</p>
+	</div>
+	<% end %>
+</div>

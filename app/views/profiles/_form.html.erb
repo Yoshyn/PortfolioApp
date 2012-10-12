@@ -1,0 +1,90 @@
+<%= form_for(@profile) do |profile_form| %>
+<% if @profile.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+	<ul>
+		<% @profile.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= profile_form.label :name %>
+	<%= profile_form.text_field :name %>
+</div>
+<div class="field">
+	<%= profile_form.label :firstname %>
+	<%= profile_form.text_field :firstname %>
+</div>
+<div class="field">
+	<%= profile_form.label :email %>
+	<%= profile_form.text_field :email %>
+</div>
+<div class="field">
+	<%= profile_form.label :login %>
+	<%= profile_form.text_field :login %>
+</div>
+<div class="field">
+	<%= profile_form.label :location %>
+	<%= profile_form.text_field :location %>
+</div>
+<div class="field">
+	<%= profile_form.label :password %>
+	<%= profile_form.password_field :password %>
+</div>
+<div class="field">
+	<%= profile_form.label :title %>
+	<%= profile_form.text_field :title %>
+</div>
+<div class="field">
+	<%= profile_form.label :description %>
+	<%= profile_form.text_area :description %>
+</div>
+<div class="field">
+	<%= profile_form.label :hobby %>
+	<%= profile_form.text_area :hobby %>
+</div>
+<div class="field">
+	<%= profile_form.label :git_link %>
+	<%= profile_form.text_field :git_link %>
+</div>
+<div class="field">
+	<%= profile_form.label :fb_link %>
+	<%= profile_form.text_field :fb_link %>
+</div>
+<div class="field">
+	<%= profile_form.label :twitter_link %>
+	<%= profile_form.text_field :twitter_link %>
+</div>
+<div class="field">
+	<%= profile_form.label :lkdIn_link %>
+	<%= profile_form.text_field :lkdIn_link %>
+</div>
+
+<% if @pictures %>
+<div class="field">
+	<%= profile_form.fields_for(:picture_relation_attributes, @profile.picture_relation) do |form| %>
+	<%= form.label "Current Avatar : " %>
+	<%= form.number_field :picture_id %>
+	<% end %>
+	<% @pictures.each do |picture| %>
+	<table>
+		<tr>
+			<td><%= picture.id %></td>
+			<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+			<td><%= link_to_function("Use this picture as Avatar", "set_avatar(#{picture.id})") %></td>
+		</tr>
+	</table>
+	<% end %>
+</div>
+<% end %>
+
+<div class="actions">
+	<%= profile_form.submit %>
+</div>
+<% end %>

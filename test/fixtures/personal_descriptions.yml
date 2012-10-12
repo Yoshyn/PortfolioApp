@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyText
+  hobbies_description: MyText
+  github_link: MyString
+  facebook_link: MyString
+  twitter_link: MyString
+  LinkedIn_link: MyString
+
+two:
+  description: MyText
+  hobbies_description: MyText
+  github_link: MyString
+  facebook_link: MyString
+  twitter_link: MyString
+  LinkedIn_link: MyString

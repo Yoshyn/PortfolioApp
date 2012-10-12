@@ -1,0 +1,34 @@
+<%= content_for :active_experiences, "class=active" %>
+
+<h1>Experiences</h1>
+
+<div class="accordion">
+	<% @experiences.each do |experience| %>
+	<div id="tab-<%= experience.compagny %>">
+		<a href="#tab-<%= experience.compagny %>" class="tab"><%= experience.compagny %> : <%= experience.position %></a>
+		<div class="content">
+			<em class="bullet"></em><span>Start : <%= experience.start_date %></span><em class="bullet"></em><span> End : <%= experience.end_date %></span>
+			<% if logged_in? %>
+			<em class="bullet"></em><span><%= link_to 'Edit', edit_experience_path(experience) %></span><em class="bullet"></em><span><%= link_to 'Destroy', experience, confirm: 'Are you sure?', method: :delete %></span>
+			<% end %>
+			<p>
+				<%= experience.description %>
+			</p>
+			<p>
+				<%= experience.website %>
+			</p>
+			<h1>Keywords : <%= experience.keywords %></h1>
+			<ul>
+				<% experience.pictures.each do |picture| %>
+				<li>
+					<%= image_tag(picture.url, :width => 100) if picture.url.present? %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<% end %>
+</div>
+<br />
+
+<%= link_to 'New Experience', new_experience_path  unless !logged_in? %>

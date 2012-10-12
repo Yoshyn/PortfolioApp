@@ -1,0 +1,27 @@
+PortfolioApp
+=========================================
+
+PortfolioApp is a simple web Application. It can be use to present yourself, your projects, your educations and your experiences.
+It is written in Ruby on Rails.
+
+Authors
+-------
+
+Sylvestre Antoine - main developer (sylvestre.antoine[at]gmail.com)
+
+Download
+--------
+
+You can also get the current development version from the git repository (https://github.com/Yoshyn/PortfolioApp).
+
+Install
+-------
+
+TODO
+
+
+Contribute
+----------
+
+Don't hesitate to post suggestions or bug reports on github or mail.
+You can even fork the project on github, maintain your own version and send us pull requests.

@@ -1,0 +1,41 @@
+<p id="notice">
+	<%= notice %>
+</p>
+
+<p>
+	<b>Title:</b>
+	<%= @project.title %>
+</p>
+
+<p>
+	<b>Start date:</b>
+	<%= @project.status %>
+</p>
+
+<p>
+	<b>Website:</b>
+	<%= @project.website %>
+</p>
+
+<p>
+	<b>Description:</b>
+	<%= @project.description %>
+</p>
+
+<p>
+	<b>Technologies:</b>
+	<%= @project.technologies %>
+</p>
+
+<p>
+	<b>Linked Picture : </b>
+	<% @project.pictures.each do |picture| %>
+	<br>
+	<b>Image : </b>
+	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %><br>
+	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>  
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project)  unless !logged_in? %> |
+<%= link_to 'Back', projects_path %>
