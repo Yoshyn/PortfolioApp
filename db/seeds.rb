@@ -49,6 +49,18 @@ Education.create(:school => "Master MIAGE", :website => "http://orleans.miage.fr
                :description => "Le Master de methodes informatiques appliquees a la gestion des entreprises (MIAGE) est un diplome universitaire francais de niveau Bac+5, alliant une double competence en informatique et en gestion, destine a former des cadres d'entreprise experts en ingenierie et management des systemes d'information. Source : Wikipedia")
 Education.create(:school => "Licence Informatique MIAGE", :website => "http://orleans.miage.fr/programme/", :location => 'Orleans', :keywords => "Systemes d'information, Bases de Donnees, Reseaux",
                :description => "Methodes informatiques appliquees a la gestion des entreprises.")
+
+puts "Deleting all PictureRelations"
+PictureRelation.delete_all
+puts "Creating PictureRelations"
+PictureRelation.create(:picture_id => 1, :parent_id => 1, :parent_type => "Profile")
+PictureRelation.create(:picture_id => 5, :parent_id => 1, :parent_type => "Project")
+PictureRelation.create(:picture_id => 2, :parent_id => 2, :parent_type => "Project")
+PictureRelation.create(:picture_id => 4, :parent_id => 3, :parent_type => "Project")
+PictureRelation.create(:picture_id => 2, :parent_id => 1, :parent_type => "Education")
+PictureRelation.create(:picture_id => 3, :parent_id => 1, :parent_type => "Education")
+PictureRelation.create(:picture_id => 4, :parent_id => 1, :parent_type => "Education")
+
                
 puts "Deleting all Experiences"
 Experience.delete_all
