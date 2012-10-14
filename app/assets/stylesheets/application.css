@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
 */
+
+.accordion .carousel-pictures 
+{
+	margin: auto;
+	width: 25%;
+}
