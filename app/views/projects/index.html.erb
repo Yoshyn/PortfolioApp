@@ -15,13 +15,33 @@
 				<%= project.description %>
 			</p>
 			<h1>Technologies : <%= project.technologies %></h1>
-			<ul>
-				<% project.pictures.each do |picture| %>
-				<li>
-					<%= image_tag(picture.url, :width => 100) if picture.url.present? %>
-				</li>
-				<% end %>
-			</ul>
+			<% pictures = project.pictures %>
+			<% if !pictures.empty? %>
+			<div class="carousel-pictures">
+				<div id="myCarousel" class="carousel slide">
+					 <!-- Carousel items -->
+					<div class="carousel-inner">
+					
+					<% pictures.each_index do |e| %>
+						<% if e == 0 %>
+							<div class="active item">
+								<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+							</div>
+						<% else %>
+							<div class="item">
+								<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+							</div>
+						<% end %>	
+					<% end %>				
+					</div>
+					<% if pictures.count > 1 %>
+					<!-- Carousel nav -->
+					<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+					<% end %>
+				</div>	
+			</div>
+			<% end %>				
 		</div>
 	</div>
 	<% end %>
