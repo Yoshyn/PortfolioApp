@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
 
-before_filter :authenticate, :except => [:show]
-
+  before_filter :check_authentication, :except => [:show]
   # GET /profiles/1
   # GET /profiles/1.json
   def show

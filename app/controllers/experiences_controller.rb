@@ -1,7 +1,6 @@
 class ExperiencesController < ApplicationController
 
-before_filter :authenticate, :except => [:index, :show]
-
+  before_filter :check_authentication, :except => [:index, :show]
   # GET /experiences
   # GET /experiences.json
   def index
@@ -39,7 +38,7 @@ before_filter :authenticate, :except => [:index, :show]
   # GET /experiences/1/edit
   def edit
     @experience = Experience.find(params[:id])
-    @pictures = Picture.find_by_sql("select * from pictures  where id not in (select picture_id from picture_relations pr where parent_id = #{@experience.id} AND parent_type = 'Project')")
+    @pictures = Picture.in_relation_with(@experience)
   end
 
   # POST /experiences

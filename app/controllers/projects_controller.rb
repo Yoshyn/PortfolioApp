@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
 
-before_filter :authenticate, :except => [:index, :show]
-
+  before_filter :check_authentication, :except => [:index, :show]
   # GET /projects
   # GET /projects.json
   def index
@@ -12,7 +11,7 @@ before_filter :authenticate, :except => [:index, :show]
       format.json { render json: @projects }
     end
   end
-  
+
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -29,7 +28,7 @@ before_filter :authenticate, :except => [:index, :show]
   def new
     @project = Project.new
     @pictures = Picture.all
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -39,7 +38,7 @@ before_filter :authenticate, :except => [:index, :show]
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-    @pictures = Picture.find_by_sql("select * from pictures  where id not in (select picture_id from picture_relations pr where parent_id = #{@project.id} AND parent_type = 'Project')")
+    @pictures = Picture.in_relation_with(@project)
   end
 
   # POST /projects
@@ -84,5 +83,5 @@ before_filter :authenticate, :except => [:index, :show]
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
-  end  
+  end
 end

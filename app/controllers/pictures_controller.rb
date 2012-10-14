@@ -1,12 +1,11 @@
 class PicturesController < ApplicationController
 
-before_filter :authenticate
-
+  before_filter :check_authentication
   # GET /pictures
   # GET /pictures.json
   def index
     @pictures = Picture.all
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pictures }

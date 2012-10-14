@@ -12,4 +12,13 @@ class Profile < ActiveRecord::Base
   
   accepts_nested_attributes_for :picture_relation, :allow_destroy => :true,
   :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+  
+  def self.authenticate(login,password)
+    user = Profile.find_by_login(login)
+    unless user && user.authenticate(password)
+      raise "Bad login or password"
+    end
+    user
+  end
+  
 end

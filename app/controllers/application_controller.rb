@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-protected
-  def authenticate
-    authenticate_or_request_with_http_basic('Administration') do |username, password|
-      user = Profile.find_by_login(username).try(:authenticate, password)
-      if user
-        session[:login] = user.login
-      end
-      user
+  protected
+  def check_authentication
+    unless session[:profile_id]
+      session[:intended_action] = action_name
+      session[:intended_controller] = controller_name
+      redirect_to new_session_url
     end
+    
   end
 end

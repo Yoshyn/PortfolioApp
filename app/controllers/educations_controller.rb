@@ -1,7 +1,6 @@
 class EducationsController < ApplicationController
 
-before_filter :authenticate, :except => [:index, :show]
-
+  before_filter :check_authentication, :except => [:index, :show]
   # GET /educations
   # GET /educations.json
   def index
@@ -39,7 +38,7 @@ before_filter :authenticate, :except => [:index, :show]
   # GET /educations/1/edit
   def edit
     @education = Education.find(params[:id])
-    @pictures = Picture.find_by_sql("select * from pictures  where id not in (select picture_id from picture_relations pr where parent_id = #{@education.id} AND parent_type = 'Project')")
+    @pictures = Picture.in_relation_with(@experience)
   end
 
   # POST /educations

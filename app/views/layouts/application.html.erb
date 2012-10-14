@@ -17,7 +17,12 @@
 	            	<li <%= yield(:active_edutions) %>><%= link_to 'Educations', educations_path %></li>
 	                <li <%= yield(:active_projects) %>><%= link_to 'Projects', projects_path %></li>
 					<% if logged_in? %><li <%= yield(:active_pictures) %>><%= link_to 'Pictures', pictures_path %></li><% end %>
-					<% if !logged_in? %><li><%= link_to 'Log In', home_connect_path %></li><% end %>
+					<% if !logged_in? %>
+						<li><%= link_to 'Log In', new_session_url  %></li>
+					<% else %>
+						<li><%= link_to 'My Profile', :controller => :profiles, :action => :edit , :id => session[:profile_id] %></li>
+						<li><%= link_to 'Log Out', session_path , method: :delete  %></li>
+					<% end %>
 	            </ul>
 	        </div>
 	    </div>
