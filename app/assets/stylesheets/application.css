@@ -17,3 +17,16 @@
 	margin: auto;
 	width: 25%;
 }
+
+
+.giant_textarea 
+{
+	width: 100%;
+}
+
+.big_title 
+{
+	margin-bottom: 2%;
+	padding: auto;
+	text-align: center;
+}
