@@ -8,7 +8,6 @@
 </div>
 <% end %>
 <article class="center">
-
 	<div class="row-fluid">
 		<div class="span5">
 			<p>
@@ -56,6 +55,6 @@
 		</div>
 	</div>
 
-	<%= link_to 'Edit', edit_project_path(@project), :class=>"btn btn-danger"  unless !logged_in? %> |
+	<%= link_to 'Edit', edit_project_path(@project), :class=>"btn btn-danger"  unless !logged_in? %>
 	<%= link_to 'Back', projects_path, :class=>"btn" %>
 </article>
