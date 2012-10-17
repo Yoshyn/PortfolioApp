@@ -4,51 +4,65 @@
 	<h1>Experiences</h1>
 </div>
 
-<div class="accordion">
+<section class="ac-container">
+	<% i = 1 %>
 	<% @experiences.each do |experience| %>
-	<div id="tab-<%= experience.compagny %>">
-		<a href="#tab-<%= experience.compagny %>" class="tab"><%= experience.compagny %> : <%= experience.position %></a>
-		<div class="content">
-			<em class="bullet"></em><span>Start : <%= experience.start_date %></span><em class="bullet"></em><span> End : <%= experience.end_date %></span>
-			<% if logged_in? %>
-			<em class="bullet"></em><span><%= link_to 'Edit', edit_experience_path(experience) %></span><em class="bullet"></em><span><%= link_to 'Destroy', experience, confirm: 'Are you sure?', method: :delete %></span>
-			<% end %>
-			<p>
-				<%= experience.description %>
-			</p>
-			<p>
-				<a href="<%= experience.website %>"><%= experience.website %></a>
-			</p>
-			<h1>Compétences : <%= experience.keywords %></h1>
-			<% pictures = experience.pictures %>
-			<% if !pictures.empty? %>
-			<div class="carousel-pictures">
-				<div id="myCarousel" class="carousel slide">
-					 <!-- Carousel items -->
-					<div class="carousel-inner">
-					
-					<% pictures.each_index do |e| %>
-						<% if e == 0 %>
-							<div class="active item">
-								<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
-							</div>
-						<% else %>
-							<div class="item">
-								<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
-							</div>
-						<% end %>	
-					<% end %>				
-					</div>
-					<!-- Carousel nav -->
-					<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-				</div>	
-			</div>
-			<% end %>			
-		</div>
-	</div>
-	<% end %>
-</div>
+				<div>
+					<input id="ac-<%= i %>" name="accordion-1" type="checkbox" />
+					<label for="ac-<%= i %>">
+						<%= experience.compagny %> : <%= experience.position %>
+					</label>
+					<article class="ac-small">
+						<p>
+							<em class="bullet"></em>
+							<span>Start : <%= experience.start_date %></span>
+							<em class="bullet"></em>
+							<span> End : <%= experience.end_date %></span>
+							<% if logged_in? %>
+								<em class="bullet"></em>
+								<span><%= link_to 'Edit', edit_experience_path(experience) %></span>
+								<em class="bullet"></em>
+								<span><%= link_to 'Destroy', experience, confirm: 'Are you sure?', method: :delete %></span>
+							<% end %>
+				
+							<%= experience.description %>
+						</p>
+						<p>
+							<a href="<%= experience.website %>"><%= experience.website %></a>
+						</p>
+						<p>
+							Compétences : <%= experience.keywords %>
+						</p>
+						<% pictures = experience.pictures %>
+						<% if !pictures.empty? %>
+						<div class="carousel-pictures">
+							<div id="myCarousel" class="carousel slide">
+								 <!-- Carousel items -->
+								<div class="carousel-inner">
+								
+								<% pictures.each_index do |e| %>
+									<% if e == 0 %>
+										<div class="active item">
+											<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+										</div>
+									<% else %>
+										<div class="item">
+											<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+										</div>
+									<% end %>	
+								<% end %>				
+								</div>
+								<!-- Carousel nav -->
+								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+								<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							</div>	
+						</div>
+						<% end %>			
+					</article>
+				</div>
+				<% i += 1 %>
+				<% end %>
+			</section>
 <br />
 
 <%= link_to 'New Experience', new_experience_path  unless !logged_in? %>
