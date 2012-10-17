@@ -1,7 +1,9 @@
 <%= form_for(@project) do |project_form| %>
 <% if @project.errors.any? %>
 <div id="error_explanation">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
 	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
 	<ul>
@@ -14,53 +16,68 @@
 </div>
 <% end %>
 
-<div class="field">
-	<%= project_form.label :title %>
-	<%= project_form.text_field :title %>
-</div>
-<div class="field">
-	<%= project_form.label :status %>
-	<%= project_form.select :status, ["Finish","In Progress","Aborted"]%>
-</div>
-<div class="field">
-	<%= project_form.label :website %>
-	<%= project_form.text_field :website %>
-</div>
-<div class="field">
-	<%= project_form.label :description %>
-	<%= project_form.text_area :description %>
-</div>
-<div class="field">
-	<%= project_form.label :technologies %>
-	<%= project_form.text_field :technologies %>
+<div class="row-fluid">
+	<div class="span5">
+		<div class="field">
+			<%= project_form.label :title %>
+			<%= project_form.text_field :title %>
+		</div>
+		<div class="field">
+			<%= project_form.label :status %>
+			<%= project_form.select :status, ["Finish","In Progress","Aborted"]%>
+		</div>
+		<div class="field">
+			<%= project_form.label :website %>
+			<%= project_form.text_field :website, :class => "giant_textarea" %>
+		</div>
+		<div class="field">
+			<%= project_form.label :technologies %>
+			<%= project_form.text_field :technologies, :class => "giant_textarea" %>
+		</div>
+	</div>
+
+	<div class="span7">
+		<div class="field">
+			<%= project_form.label :description %>
+			<%= project_form.text_area :description, :class => "giant_textarea" %>
+		</div>
+	</div>
 </div>
 
-<div id="pictures">
-	<%= render :partial => 'picture_relations/form', :locals => {:form => project_form} %>
-	<% if @pictures %>
-	<div id="ImageList">
-		<table>
-			<tr>
-				<th>Legend</th>
-				<th>Picture</th>
-				<th>Add</th>
-				<th></th>
-				<th></th>
-			</tr>
-			<% @pictures.each do |picture| %>
-			<tr>
-				<td><%= picture.legend %></td>
-				<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
-				<td><%= link_to_add_picture(project_form, picture) %></td>
-			</tr>
-			<% end %>
-		</table>
+<div class="row-fluid">
+	<div class="span5">
+		<div id="pictures">
+			<%= render :partial => 'picture_relations/form', :locals => {:form => project_form} %>
+		</div>
 	</div>
-	<% end %>
+	<div class="span7">
+		<% if @pictures %>
+		<div id="ImageList">
+			<table class="table table-bordered">
+				<caption>
+					<h3>Wana add some Pictures?</h3>
+				</caption>
+				<tr>
+					<th>Legend</th>
+					<th>Picture</th>
+					<th>Add</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<% @pictures.each do |picture| %>
+				<tr>
+					<td><%= picture.legend %></td>
+					<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+					<td><%= link_to_add_picture(project_form, picture) %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+		<% end %>
+	</div>
 </div>
-<br />
-<br />
+
 <div class="actions">
-	<%= project_form.submit :class => "btn" %>
+	<%= project_form.submit :class => "btn btn-danger" %>
 </div>
 <% end %>

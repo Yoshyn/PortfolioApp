@@ -38,7 +38,7 @@ class EducationsController < ApplicationController
   # GET /educations/1/edit
   def edit
     @education = Education.find(params[:id])
-    @pictures = Picture.in_relation_with(@experience)
+    @pictures = Picture.in_relation_with(@education)
   end
 
   # POST /educations

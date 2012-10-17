@@ -12,6 +12,6 @@ module ApplicationHelper
     fields = form.fields_for(:picture_relations, picture_relation, :child_index => "new_picture_relation") do |builder|
       render(:partial => 'picture_relations/picture_relation_fields', :locals => {:p_id => picture.id, :p_url => picture.url, :form => builder})
     end
-    link_to_function("Add this Picture", "add_picture(\"#{escape_javascript(fields)}\")", :class => "btn")
+    link_to_function("Add this Picture", "add_picture(\"#{escape_javascript(fields)}\")", :class => "btn btn-success")
   end
 end

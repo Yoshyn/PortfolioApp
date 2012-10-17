@@ -7,10 +7,11 @@
 	<%= notice %>
 </div>
 <% end %>
-<div class="row">
-	<div class="page-header">
-		<h1>In a NutShell</h1>
-	</div>
+
+<div class="page-header">
+	<h1>In a NutShell</h1>
+</div>
+<div class="row-fluid">
 	<div class="span4" >
 		<address class="well">
 			<strong><%= @profile.name %> <%= @profile.firstname %></strong>
@@ -63,4 +64,4 @@
 	</div>
 </div>
 
-<%= link_to 'Edit', edit_profile_path(@profile)  unless !logged_in? %>
+<%= link_to 'Edit', edit_profile_path(@profile), :class => "btn btn-danger"  unless !logged_in? %>

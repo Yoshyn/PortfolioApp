@@ -1,7 +1,9 @@
 <%= form_for(@profile, :html => { :class => "form-horizontal"} ) do |profile_form| %>
 <% if @profile.errors.any? %>
 <div id="error_explanation">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
 	<h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
 	<ul>
@@ -14,119 +16,112 @@
 </div>
 <% end %>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span5">
-			<div class="control-group">
-				<%= profile_form.label :name, :class => "control-label" %>
-				<div class="controls">
+<div class="row-fluid">
+	<div class="span5">
+		<div class="control-group">
+			<%= profile_form.label :name, :class => "control-label" %>
+			<div class="controls">
 				<%= profile_form.text_field :name %>
-				</div>
 			</div>
-			<div class="control-group">
-				<%= profile_form.label :firstname, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :firstname %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :email, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :email %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :login, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :login %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :location, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :location %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :password, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.password_field :password %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :title, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :title %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :git_link, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :git_link %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :fb_link, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :fb_link %>
-				</div>
-			</div>
-			<div class="control-group">
-				
-				<%= profile_form.label :twitter_link, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :twitter_link %>
-				</div>
-			</div>
-			<div class="control-group">
-				<%= profile_form.label :lkdIn_link, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_field :lkdIn_link %>
-				</div>
-			</div>		
-			<% if @pictures %>
-			<div class="control-group">
-				<%= profile_form.fields_for(:picture_relation_attributes, @profile.picture_relation) do |form| %>
-				<%= form.label "Current Avatar : ", :class => "control-label" %>
-				<div class="controls">
-				<%= form.number_field :picture_id %>
-				</div>
-				<% end %>
-				<% @pictures.each do |picture| %>
-				<table class="table">
-					<tr>
-						<td><%= picture.id %></td>
-						<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
-						<td><%= link_to_function("Use this picture as Avatar", "set_avatar(#{picture.id})", :class => "btn") %></td>
-					</tr>
-				</table>
-				<% end %>
-			</div>
-			<% end %>				
 		</div>
-		<div class="span7">
-			<div class="control-group">
-				<%= profile_form.label :description, :class => "control-label" %>
-				<div class="controls">
-				<%= profile_form.text_area :description, :class => "giant_textarea" %>
-				</div>
+		<div class="control-group">
+			<%= profile_form.label :firstname, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :firstname %>
 			</div>
-			<div class="control-group">
-				<%= profile_form.label :hobby, :class => "control-label" %>
-				<div class="controls">
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :email, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :email %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :login, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :login %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :location, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :location %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :password, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.password_field :password %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :title, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :title %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :git_link, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :git_link %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :fb_link, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :fb_link %>
+			</div>
+		</div>
+		<div class="control-group">
+
+			<%= profile_form.label :twitter_link, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :twitter_link %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :lkdIn_link, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_field :lkdIn_link %>
+			</div>
+		</div>
+		<% if @pictures %>
+		<div class="control-group">
+			<%= profile_form.fields_for(:picture_relation_attributes, @profile.picture_relation) do |form| %>
+			<%= form.label "Current Avatar : ", :class => "control-label" %>
+			<div class="controls">
+				<%= form.number_field :picture_id %>
+			</div>
+			<% end %>
+			<% @pictures.each do |picture| %>
+			<table class="table">
+				<tr>
+					<td><%= picture.id %></td>
+					<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+					<td><%= link_to_function("Use this picture as Avatar", "set_avatar(#{picture.id})", :class => "btn") %></td>
+				</tr>
+			</table>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+	<div class="span7">
+		<div class="control-group">
+			<%= profile_form.label :description, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_area :description, :class => "giant_textarea" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= profile_form.label :hobby, :class => "control-label" %>
+			<div class="controls">
 				<%= profile_form.text_area :hobby, :class => "giant_textarea" %>
-				</div>
-			</div>	
-			<div class="actions">
-				<%= profile_form.submit %>
-			</div>			
+			</div>
+		</div>
+		<div class="actions">
+			<%= profile_form.submit 'Update my profile', :class => "btn btn-danger" %>
 		</div>
 	</div>
 </div>
-
-
-
-
-
 
 <% end %>

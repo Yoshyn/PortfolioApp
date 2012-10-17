@@ -1,60 +1,76 @@
 <%= content_for :active_experiences, "class=active" %>
 <% if notice %>
 <div id="notice" class="alert alert-info">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
 	<%= notice %>
 </div>
 <% end %>
 
-<p>
-  <b>Compagny:</b>
-  <%= @experience.compagny %>
-</p>
+<article class="center">
+	<div class="row-fluid">
+		<div class="span5">
+			<p>
+				<b>Compagny:</b>
+				<%= @experience.compagny %>
+			</p>
 
-<p>
-  <b>Website:</b>
-  <%= @experience.website %>
-</p>
+			<p>
+				<b>Website:</b>
+				<%= @experience.website %>
+			</p>
 
-<p>
-  <b>Location:</b>
-  <%= @experience.location %>
-</p>
+			<p>
+				<b>Location:</b>
+				<%= @experience.location %>
+			</p>
 
-<p>
-  <b>Position:</b>
-  <%= @experience.position %>
-</p>
+			<p>
+				<b>Position:</b>
+				<%= @experience.position %>
+			</p>
 
-<p>
-  <b>Start date:</b>
-  <%= @experience.start_date %>
-</p>
+			<p>
+				<b>Start date:</b>
+				<%= @experience.start_date %>
+			</p>
 
-<p>
-  <b>End date:</b>
-  <%= @experience.end_date %>
-</p>
+			<p>
+				<b>End date:</b>
+				<%= @experience.end_date %>
+			</p>
 
-<p>
-  <b>Description:</b>
-  <%= @experience.description %>
-</p>
+			<p>
+				<b>Description:</b>
+				<%= @experience.description %>
+			</p>
 
-<p>
-  <b>Keywords:</b>
-  <%= @experience.keywords %>
-</p>
+			<p>
+				<b>Keywords:</b>
+				<%= @experience.keywords %>
+			</p>
 
-<p>
-	<b>Linked Picture : </b>
-	<% @experience.pictures.each do |picture| %>
-	<br>
-	<b>Image : </b>
-	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %><br>
-	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>  
-	<% end %>
-</p>
+		</div>
+		<div class="span7">
+			<table class="table table-bordered">
+				<caption>
+					<h3>Linked Picture :</h3>
+				</caption>
+				<tr>
+					<th>Legend</th>
+					<th>Picture</th>
+				</tr>
+				<% @experience.pictures.each do |picture| %>
+				<tr>
+					<td><%= picture.legend %></td>
+					<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
 
-<%= link_to 'Edit', edit_experience_path(@experience)  unless !logged_in? %> |
-<%= link_to 'Back', experiences_path %>
+	<%= link_to 'Edit', edit_experience_path(@experience), :class=>"btn btn-danger"  unless !logged_in? %>
+	<%= link_to 'Back', experiences_path, :class=>"btn" %>
+</article>

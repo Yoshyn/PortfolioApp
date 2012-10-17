@@ -1,7 +1,9 @@
 <%= form_for(@education) do |education_form| %>
 <% if @education.errors.any? %>
 <div id="error_explanation">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
 	<h2><%= pluralize(@education.errors.count, "error") %> prohibited this education from being saved:</h2>
 
 	<ul>
@@ -13,22 +15,40 @@
 	</ul>
 </div>
 <% end %>
+<div class="row-fluid">
+	<div class="span5">
+		<div class="field">
+			<%= education_form.label :school %>
+			<br />
+			<%= education_form.text_field :school %>
+		</div>
+		<div class="field">
+			<%= education_form.label :website %>
+			<br />
+			<%= education_form.text_field :website %>
+		</div>
+		<div class="field">
+			<%= education_form.label :location %>
+			<br />
+			<%= education_form.text_field :location %>
+		</div>
+		<div class="field">
+			<%= education_form.label :keywords %>
+			<br />
+			<%= education_form.text_field :keywords, :class => "giant_textarea" %>
+		</div>
+	</div>
 
-<div class="field">
-	<%= education_form.label :school %>
-	<br />
-	<%= education_form.text_field :school %>
+	<div class="span7">
+
+		<div class="field">
+			<%= education_form.label :description %>
+			<br />
+			<%= education_form.text_area :description, :class => "giant_textarea" %>
+		</div>
+	</div>
 </div>
-<div class="field">
-	<%= education_form.label :website %>
-	<br />
-	<%= education_form.text_field :website %>
-</div>
-<div class="field">
-	<%= education_form.label :location %>
-	<br />
-	<%= education_form.text_field :location %>
-</div>
+
 <div class="field">
 	<%= education_form.label :start_date %>
 	<br />
@@ -39,42 +59,41 @@
 	<br />
 	<%= education_form.date_select :end_date %>
 </div>
-<div class="field">
-	<%= education_form.label :description %>
-	<br />
-	<%= education_form.text_area :description %>
-</div>
-<div class="field">
-	<%= education_form.label :keywords %>
-	<br />
-	<%= education_form.text_field :keywords %>
-</div>
 
-<div id="pictures">
-	<%= render :partial => 'picture_relations/form', :locals => {:form => education_form} %>
-	<% if @pictures %>
-	<div id="ImageList">
-		<table>
-			<tr>
-				<th>Legend</th>
-				<th>Picture</th>
-				<th>Add</th>
-				<th></th>
-				<th></th>
-			</tr>
-			<% @pictures.each do |picture| %>
-			<tr>
-				<td><%= picture.legend %></td>
-				<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
-				<td><%= link_to_add_picture(education_form, picture) %></td>
-			</tr>
-			<% end %>
-		</table>
+<div class="row-fluid">
+	<div class="span5">
+		<div id="pictures">
+			<%= render :partial => 'picture_relations/form', :locals => {:form => education_form} %>
+		</div>
 	</div>
-	<% end %>
+	<div class="span7">
+		<% if @pictures %>
+		<div id="ImageList">
+			<table class="table table-bordered">
+				<caption>
+					<h3>Wana add some Pictures?</h3>
+				</caption>
+				<tr>
+					<th>Legend</th>
+					<th>Picture</th>
+					<th>Add</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<% @pictures.each do |picture| %>
+				<tr>
+					<td><%= picture.legend %></td>
+					<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+					<td><%= link_to_add_picture(education_form, picture) %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+		<% end %>
+	</div>
 </div>
 
 <div class="actions">
-	<%= education_form.submit %>
+	<%= education_form.submit :class => "btn btn-danger" %>
 </div>
 <% end %>
