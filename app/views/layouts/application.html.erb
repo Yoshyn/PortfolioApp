@@ -1,44 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PortFolio</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <%= javascript_include_tag "bootstrap" %>
-</head>
-<body>
-	<div class="navbar navbar-fixed-top">
-	       <div class="container">
-	        <div class="navbar-inner">
-	            <a class="brand" href="/">My PortFolio</a>
-	            <ul class="nav">
-	            	<li <%= yield(:active_home) %>> <%= link_to 'Home', home_index_path %></li>
-	            	<li <%= yield(:active_experiences) %>><%= link_to 'Experiences', experiences_path %></li>
-	            	<li <%= yield(:active_educations) %>><%= link_to 'Educations', educations_path %></li>
-	                <li <%= yield(:active_projects) %>><%= link_to 'Projects', projects_path %></li>
-					<% if logged_in? %><li <%= yield(:active_pictures) %>><%= link_to 'Pictures', pictures_path %></li><% end %>
-					<% if !logged_in? %>
-						<li <%= yield(:active_logIn) %>><%= link_to 'Log In', new_session_url  %></li>
-					<% else %>
-						<li <%= yield(:active_profile) %>><%= link_to 'My Profile', :controller => :profiles, :action => :edit , :id => session[:profile_id] %></li>
-						<li><%= link_to 'Log Out', session_path , method: :delete  %></li>
-					<% end %>
-	            </ul>
-	        </div>
-	    </div>
-	</div>
+	<head>
+		<title>PortFolio</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<%= javascript_include_tag "bootstrap" %>
+	</head>
+	<body>
+		<div class="navbar navbar-fixed-top">
 
-<div class="container" style="margin-top: 60px;">
-    <%= yield %>
-</div>
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="/">My PortFolio</a>
+					<ul class="nav">
+						<li <%= yield(:active_home) %>>
+							<%= link_to 'Home', home_index_path %>
+						</li>
+						<li <%= yield(:active_experiences) %>>
+							<%= link_to 'Experiences', experiences_path %>
+						</li>
+						<li <%= yield(:active_educations) %>>
+							<%= link_to 'Educations', educations_path %>
+						</li>
+						<li <%= yield(:active_projects) %>>
+							<%= link_to 'Projects', projects_path %>
+						</li>
+						<% if logged_in? %>
+						<li <%= yield(:active_pictures) %>>
+							<%= link_to 'Pictures', pictures_path %>
+						</li><% end %>
+						<% if !logged_in? %>
+						<li <%= yield(:active_logIn) %>>
+							<%= link_to 'Log In', new_session_url  %>
+						</li>
+						<% else %>
+						<li <%= yield(:active_profile) %>>
+							<%= link_to 'My Profile', :controller => :profiles, :action => :edit , :id => session[:profile_id] %>
+						</li>
+						<li>
+							<%= link_to 'Log Out', session_path , method: :delete  %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
 
-</body>
-<footer class="footer">
-    <div class="container">
-    	<p>PortFolioApp @ 2012</p>
-        <p>Designed and built by <a target="_blank" href="http://twitter.com/Naremy">@Naremy</a>.</p>
-        <p>Source code and other things <a target="_blank" href=" https://github.com/Yoshyn">on github</a></p>
-    </div>
-</footer>
+		<div class="container" style="margin-top: 60px;">
+			<%= yield %>
+		</div>
+
+	</body>
+	<footer class="row">
+		<div>
+			<p>
+				PortFolioApp @ 2012
+			</p>
+			<p>
+				Designed and built by <a target="_blank" href="http://twitter.com/Naremy">@Naremy</a>.
+			</p>
+			<p>
+				Source code and other things on <a target="_blank" href="https://github.com/Yoshyn/PortfolioApp">Github</a>
+			</p>
+		</div>
+	</footer>
 </html>

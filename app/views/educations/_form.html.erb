@@ -1,6 +1,7 @@
 <%= form_for(@education) do |education_form| %>
 <% if @education.errors.any? %>
 <div id="error_explanation">
+	<button type="button" class="close" data-dismiss="alert">×</button>
 	<h2><%= pluralize(@education.errors.count, "error") %> prohibited this education from being saved:</h2>
 
 	<ul>

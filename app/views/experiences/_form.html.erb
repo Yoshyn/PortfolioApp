@@ -1,6 +1,7 @@
 <%= form_for(@experience) do |experience_form| %>
 <% if @experience.errors.any? %>
 <div id="error_explanation">
+	<button type="button" class="close" data-dismiss="alert">×</button>
 	<h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
 
 	<ul>

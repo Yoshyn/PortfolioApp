@@ -1,39 +1,45 @@
 <%= content_for :active_educations, "class=active" %>
-<p id="notice"><%= notice %></p>
+
+<% if notice %>
+<div id="notice" class="alert alert-info">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	<%= notice %>
+</div>
+<% end %>
 
 <p>
-  <b>School:</b>
-  <%= @education.school %>
+	<b>School:</b>
+	<%= @education.school %>
 </p>
 
 <p>
-  <b>Website:</b>
-  <%= @education.website %>
+	<b>Website:</b>
+	<%= @education.website %>
 </p>
 
 <p>
-  <b>Location:</b>
-  <%= @education.location %>
+	<b>Location:</b>
+	<%= @education.location %>
 </p>
 
 <p>
-  <b>Start date:</b>
-  <%= @education.start_date %>
+	<b>Start date:</b>
+	<%= @education.start_date %>
 </p>
 
 <p>
-  <b>End date:</b>
-  <%= @education.end_date %>
+	<b>End date:</b>
+	<%= @education.end_date %>
 </p>
 
 <p>
-  <b>Description:</b>
-  <%= @education.description %>
+	<b>Description:</b>
+	<%= @education.description %>
 </p>
 
 <p>
-  <b>Keywords:</b>
-  <%= @education.keywords %>
+	<b>Keywords:</b>
+	<%= @education.keywords %>
 </p>
 
 <p>
@@ -41,8 +47,9 @@
 	<% @education.pictures.each do |picture| %>
 	<br>
 	<b>Image : </b>
-	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %><br>
-	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>  
+	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %>
+	<br>
+	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>
 	<% end %>
 </p>
 

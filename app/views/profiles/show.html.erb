@@ -1,60 +1,54 @@
 <%= content_for :active_profile, "class=active" %>
-<h1>In a NutShell </h1>
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<div id="notice" class="alert alert-info">
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
+	<%= notice %>
+</div>
+<% end %>
+<div class="row">
+	<div class="page-header">
+		<h1>In a NutShell</h1>
+	</div>
+	<div class="span4" >
+		<address class="well">
+			<strong><%= @profile.name %> <%= @profile.firstname %></strong>
+			<br>
+			<strong>Location : </strong><%= @profile.location %>
+			<br>
+			<strong>Email : </strong><a href="mailto:#"><%= @profile.email %></a>
+		</address>
+	</div>
+	<div class="span4">
+		<address class="well">
+			<strong>Github : </strong><a href="<%= @profile.git_link %>"><%= @profile.git_link %></a>
+			<br>
+			<strong>Facebook : </strong><a href="<%= @profile.fb_link %>"><%= @profile.fb_link %></a>
+			<br>
+			<strong>Twitter : </strong><a href="<%= @profile.twitter_link %>"><%= @profile.twitter_link %></a>
+			<br>
+			<strong>Linkedin : </strong><a href="<%= @profile.lkdIn_link %>"><%= @profile.lkdIn_link %></a>
+			<br>
+		</address>
+	</div>
+	<div class="span4">
+		<%= image_tag(@profile.picture.url, :width => 100, :class => "well") if @profile.picture.present? %>
+	</div>
 
-<p>
-  <b>Name:</b>
-  <%= @profile.name %>
-</p>
+	<div class="span12">
+		<h3>Description:</h3>
+		<div class="well">
+			<%= simple_format(@profile.description) %>
+		</div>
+	</div>
 
-<p>
-  <b>First Name :</b>
-  <%= @profile.firstname %>
-</p>
-
-<p>
-  <b>Email :</b>
-  <%= @profile.email %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @profile.description %>
-</p>
-
-<p>
-  <b>More about me:</b>
-  <%= @profile.hobby %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @profile.location %>
-</p>
-
-<p>
-  <b>Github link:</b>
-  <%= @profile.git_link %>
-</p>
-
-<p>
-  <b>Facebook link:</b>
-  <%= @profile.fb_link %>
-</p>
-
-<p>
-  <b>Twitter link:</b>
-  <%= @profile.twitter_link %>
-</p>
-
-<p>
-  <b>Linkedin link:</b>
-  <%= @profile.lkdIn_link %>
-</p>
-
-<p>
-  <b>Avatar:</b>
-  <%= image_tag(@profile.picture.url, :width => 100) if @profile.picture.present? %>
-</p>
+	<div class="span12">
+		<h3>More about me:</h3>
+		<div class="well">
+			<%= simple_format(@profile.hobby) %>
+		</div>
+	</div>
+</div>
 
 <%= link_to 'Edit', edit_profile_path(@profile)  unless !logged_in? %>
