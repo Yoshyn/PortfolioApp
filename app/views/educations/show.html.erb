@@ -2,56 +2,70 @@
 
 <% if notice %>
 <div id="notice" class="alert alert-info">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">
+		×
+	</button>
 	<%= notice %>
 </div>
 <% end %>
+<article class="center">
+	<div class="row-fluid">
+		<div class="span5">
+			<p>
+				<b>School:</b>
+				<%= @education.school %>
+			</p>
 
-<p>
-	<b>School:</b>
-	<%= @education.school %>
-</p>
+			<p>
+				<b>Website:</b>
+				<%= @education.website %>
+			</p>
 
-<p>
-	<b>Website:</b>
-	<%= @education.website %>
-</p>
+			<p>
+				<b>Location:</b>
+				<%= @education.location %>
+			</p>
 
-<p>
-	<b>Location:</b>
-	<%= @education.location %>
-</p>
+			<p>
+				<b>Start date:</b>
+				<%= @education.start_date %>
+			</p>
 
-<p>
-	<b>Start date:</b>
-	<%= @education.start_date %>
-</p>
+			<p>
+				<b>End date:</b>
+				<%= @education.end_date %>
+			</p>
 
-<p>
-	<b>End date:</b>
-	<%= @education.end_date %>
-</p>
+			<p>
+				<b>Description:</b>
+				<%= @education.description %>
+			</p>
 
-<p>
-	<b>Description:</b>
-	<%= @education.description %>
-</p>
+			<p>
+				<b>Keywords:</b>
+				<%= @education.keywords %>
+			</p>
 
-<p>
-	<b>Keywords:</b>
-	<%= @education.keywords %>
-</p>
+		</div>
+		<div class="span7">
+			<table class="table table-bordered">
+				<caption>
+					<h3>Linked Picture :</h3>
+				</caption>
+				<tr>
+					<th>Legend</th>
+					<th>Picture</th>
+				</tr>
+				<% @education.pictures.each do |picture| %>
+				<tr>
+					<td><%= picture.legend %></td>
+					<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
 
-<p>
-	<b>Linked Picture : </b>
-	<% @education.pictures.each do |picture| %>
-	<br>
-	<b>Image : </b>
-	<u>Legend :</u> <%= picture.legend %> |<u>Url :</u> <%= picture.url %>
-	<br>
-	<%= image_tag(picture.url, :width => 100) if picture.url.present? %>
-	<% end %>
-</p>
-
-<%= link_to 'Edit', edit_education_path(@education)  unless !logged_in? %> |
-<%= link_to 'Back', educations_path %>
+	<%= link_to 'Edit', edit_education_path(@education), :class=>"btn btn-danger"  unless !logged_in? %>
+	<%= link_to 'Back', educations_path, :class=>"btn" %>
+</article>

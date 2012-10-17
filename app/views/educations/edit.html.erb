@@ -3,7 +3,9 @@
 	<h1>Editing education</h1>
 </div>
 
-<%= render 'form' %>
+<article class="center">
+	<%= render 'form' %>
 
-<%= link_to 'Show', @education %> |
-<%= link_to 'Back', educations_path %>
+	<%= link_to 'Show', @education, :class => "btn btn-info" %>
+	<%= link_to 'Back', educations_path, :class => "btn" %>
+</article>
