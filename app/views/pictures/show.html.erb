@@ -1,25 +1,25 @@
 <%= content_for :active_pictures, "class=active" %>
 <% if notice %>
 <div id="notice" class="alert alert-info">
-	<button type="button" class="close" data-dismiss="alert">×</button>
+	<button type="button" class="close" data-dismiss="alert">x</button>
 	<%= notice %>
 </div>
 <% end %>
 
-<p>
-  <b>Legend:</b>
-  <%= @picture.legend %>
-</p>
+<div class="page-header">
+	<h1>Showing <%= @picture.legend %></h1>
+</div>
 
-<p>
-  <b>Url:</b>
-  <%= @picture.url %>
-</p>
+<article class="center">
+		<p>
+			<b>Url:</b>
+			<%= @picture.url %>
+		</p>
 
-<p>
-  <%= image_tag(@picture.url) if @picture.url.present? %>
-</p>
+		<p>
+			<%= image_tag(@picture.url) if @picture.url.present? %>
+		</p>
 
-
-<%= link_to 'Edit', edit_picture_path(@picture)  unless !logged_in? %> |
-<%= link_to 'Back', pictures_path %>
+		<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-danger"  unless !logged_in? %>
+		<%= link_to 'Back', pictures_path, :class => "btn" %>
+</article>

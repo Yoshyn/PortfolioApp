@@ -10,33 +10,38 @@
  *
  *= require_self
  *= require_tree .
-*/
+ */
 
 body {
-    background: url("font.png");
+	background: url("font.png");
 }
 
-.center
-{
-	text-align: center;	
+.center {
+	text-align: center;
 }
 
-
-.giant_textarea 
-{
+.giant_textarea {
 	width: 100%;
 }
 
 footer {
-    background-color: #F5F5F5;
-    border-top: 1px solid #E5E5E5;
-	text-align:center;
-	border-radius:8px;
-	-moz-border-radius:8px;
-    margin-top: 40px;
-    padding: 10px;
+	background-color: #F5F5F5;
+	border-top: 1px solid #E5E5E5;
+	text-align: center;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	margin-top: 40px;
+	padding: 10px;
 }
 
 p {
-	text-indent : 4%;
+	text-indent: 4%;
+}
+
+article {
+	background-color: #F5F5F5;
+	border: 1px solid black;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 2px 4px 4px #1C1A19;
+	padding: 5px;
 }
