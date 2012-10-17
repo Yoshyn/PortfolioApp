@@ -5,11 +5,14 @@
 </div>
 
 <section class="ac-container">
-	<% i = 1 %>
 	<% @projects.each do |project| %>
 		<div>
-			<input id="ac-<%= i %>" name="accordion-1" type="checkbox" />
-			<label for="ac-<%= i %>">
+			<% if params[:project_id].present? and params[:project_id].to_i == project.id %>
+				<input id="ac-<%= project.id %>" name="accordion-1" type="checkbox", checked="checked" />
+			<% else %>
+				<input id="ac-<%= project.id %>" name="accordion-1" type="checkbox" />
+			<% end %>
+			<label for="ac-<%= project.id %>">
 				<%= project.title %>
 			</label>
 			<article class="ac-small">
@@ -55,7 +58,6 @@
 				<% end %>			
 			</article>
 		</div>
-		<% i += 1 %>
 	<% end %>
 </section>
 <br />

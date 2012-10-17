@@ -24,7 +24,7 @@
 			<p>
 				<%= truncate(project.description, :length => 180) %>
 			</p>
-			<%= link_to 'View details »', projects_path(:anchor => 'tab-'+project.title), :class => "btn" %>
+			<%= link_to 'View details »', projects_path + "?project_id=#{project.id}",  :class => "btn" %>
 		</div>
 	</div>
 	<% end %>
