@@ -35,24 +35,26 @@
 				<% pictures = education.pictures %>
 				<% if !pictures.empty? %>
 					<div class="carousel-pictures">
-						<div id="myCarousel" class="carousel slide">
+						<div id="myCarousel<%=project.id%>" class="carousel slide">
 						 <!-- Carousel items -->
 							<div class="carousel-inner">
-								<% pictures.each_index do |e| %>
-									<% if e == 0 %>
+								<% pictures.each_index do |e_index| %>
+									<% if e_index == 0 %>
 										<div class="active item">
-											<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+											<%= image_tag(pictures[e_index].url) if pictures[e_index].url.present? %>
 										</div>
 									<% else %>
 										<div class="item">
-											<%= image_tag(pictures[e].url) if pictures[e].url.present? %>
+											<%= image_tag(pictures[e_index].url) if pictures[e_index].url.present? %>
 										</div>
 									<% end %>	
 								<% end %>				
 							</div>
+							<% if pictures.count > 1 %>
 							<!-- Carousel nav -->
-							<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-							<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							<a class="carousel-control left" href="#myCarousel<%=project.id%>" data-slide="prev">&lsaquo;</a>
+							<a class="carousel-control right" href="#myCarousel<%=project.id%>" data-slide="next">&rsaquo;</a>
+							<% end %>
 						</div>	
 					</div>
 				<% end %>			
