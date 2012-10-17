@@ -3,8 +3,9 @@
 <div class="page-header">
 	<h1>Editing project</h1>
 </div>
+<article class="center">
+	<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+	<%= link_to 'Show', @project, :class => "btn btn-info" %>
+	<%= link_to 'Back', projects_path, :class => "btn" %>
+</article>
