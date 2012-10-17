@@ -39,16 +39,10 @@
 			<%= experience_form.text_field :position %>
 		</div>
 		<div class="field">
-			<%= experience_form.label :start_date %>
+			<%= experience_form.label :keywords %>
 			<br />
-			<%= experience_form.date_select :start_date %>
+			<%= experience_form.text_field :keywords, :class => "giant_textarea" %>
 		</div>
-		<div class="field">
-			<%= experience_form.label :end_date %>
-			<br />
-			<%= experience_form.date_select :end_date %>
-		</div>
-
 	</div>
 
 	<div class="span7">
@@ -57,11 +51,16 @@
 			<br />
 			<%= experience_form.text_area :description, :class => "giant_textarea" %>
 		</div>
-		<div class="field">
-			<%= experience_form.label :keywords %>
-			<br />
-			<%= experience_form.text_field :keywords, :class => "giant_textarea" %>
-		</div>
+	</div>
+	<div class="field">
+		<%= experience_form.label :start_date %>
+		<br />
+		<%= experience_form.date_select :start_date %>
+	</div>
+	<div class="field">
+		<%= experience_form.label :end_date %>
+		<br />
+		<%= experience_form.date_select :end_date %>
 	</div>
 </div>
 
