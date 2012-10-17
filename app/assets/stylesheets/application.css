@@ -12,10 +12,13 @@
  *= require_tree .
 */
 
-.accordion .carousel-pictures 
+body {
+    background: url("font.png");
+}
+
+.center
 {
-	margin: auto;
-	width: 25%;
+	text-align: center;	
 }
 
 

@@ -5,7 +5,6 @@
 }
 
 .accordion {
-    width: 700px;
     padding: 1px 5px 5px 5px;
     background: #141517;
  
@@ -120,6 +119,14 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+.accordion .content p{
+  font-style: italic;
+  color: #777;
+  line-height: 23px;
+  font-size: 14px;
+  padding: 20px;
+}
  
 .accordion .content ul li {
     list-style: none;
@@ -134,5 +141,19 @@
 }
 
 .accordion > div:target {
-    height: 350px;
+    height: 400px;
 }
+
+.accordion .carousel-pictures
+{
+  margin: auto;
+  width: 30%;
+}
+
+.accordion .carousel-pictures img {
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  width: 300px;
+}
+

@@ -15,21 +15,33 @@
 		<address class="well">
 			<strong><%= @profile.name %> <%= @profile.firstname %></strong>
 			<br>
+			<% if !@profile.location.empty? %>
 			<strong>Location : </strong><%= @profile.location %>
 			<br>
+			<% end %>
+			<% if !@profile.email.empty? %>
 			<strong>Email : </strong><a href="mailto:#"><%= @profile.email %></a>
+			<% end %>
 		</address>
 	</div>
 	<div class="span4">
 		<address class="well">
+			<% if !@profile.git_link.empty? %>
 			<strong>Github : </strong><a href="<%= @profile.git_link %>"><%= @profile.git_link %></a>
 			<br>
+			<% end %>
+			<% if !@profile.fb_link.empty? %>
 			<strong>Facebook : </strong><a href="<%= @profile.fb_link %>"><%= @profile.fb_link %></a>
 			<br>
+			<% end %>
+			<% if !@profile.twitter_link.empty? %>
 			<strong>Twitter : </strong><a href="<%= @profile.twitter_link %>"><%= @profile.twitter_link %></a>
 			<br>
+			<% end %>
+			<% if !@profile.lkdIn_link.empty? %>
 			<strong>Linkedin : </strong><a href="<%= @profile.lkdIn_link %>"><%= @profile.lkdIn_link %></a>
 			<br>
+			<% end %>
 		</address>
 	</div>
 	<div class="span4">
