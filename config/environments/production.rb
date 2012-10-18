@@ -15,7 +15,8 @@ Portifolie::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  # http://stackoverflow.com/questions/7275636/rails-3-1-0-actionviewtemplateerrror-application-css-isnt-precompiled
+  config.assets.compile = true #Logicaly false
 
   # Generate digests for assets URLs
   config.assets.digest = true
