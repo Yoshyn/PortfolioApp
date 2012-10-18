@@ -21,9 +21,8 @@
 			<span><em class="bullet"></em> <%= link_to 'Edit', edit_experience_path(experience) %></span>
 			<span><em class="bullet"></em> <%= link_to 'Destroy', experience, confirm: 'Are you sure?', method: :delete %></span>
 			<% end %>
-			<p>
-				<%= experience.description %>
-			</p>
+
+			<%= simple_format(experience.description) %>
 
 			<h5> Compétences : <%= experience.keywords %> </h5>
 			<% pictures = experience.pictures %>

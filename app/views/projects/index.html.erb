@@ -23,7 +23,7 @@
 			<span><em class="bullet"></em> <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></span>
 			<% end %>
 			<p>
-				<%= project.description %>
+				<%= simple_format(project.description) %>
 			</p>
 			<h5>Technologies : <%= project.technologies %></h5>
 			<% pictures = project.pictures %>

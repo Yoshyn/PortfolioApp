@@ -21,15 +21,14 @@
 			<span><em class="bullet"></em> <%= link_to 'Edit', edit_education_path(education) %></span>
 			<span><em class="bullet"></em> <%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></span>
 			<% end %>
-			<p>
-				<%= education.description %>
-			</p>
-
+			
+			<%= simple_format(education.description) %>
+			
 			<h5> Compétences : <%= education.keywords %> </h5>
 			<% pictures = education.pictures %>
 			<% if !pictures.blank? %>
 			<div class="carousel-pictures">
-				<div id="myCarousel<%= education.id%>" class="carousel slide">
+				<div id="myCarousel<%= education.id %>" class="carousel slide">
 					<!-- Carousel items -->
 					<div class="carousel-inner">
 						<% pictures.each_index do |e_index| %>
