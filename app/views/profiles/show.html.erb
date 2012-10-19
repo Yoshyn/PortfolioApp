@@ -50,13 +50,24 @@
 			<%= image_tag(@profile.picture.url, :width => 150, :class => "well") if @profile.picture.present? %>
 	</div>
 
+	<% if !@profile.workInformations.blank? %>
+	<div class="span7">
+	<% else %>
 	<div class="span12">
+	<% end %>
 		<h3>Description:</h3>
 		<div class="well">
 			<%= simple_format(@profile.description) %>
 		</div>
 	</div>
-
+	<% if !@profile.workInformations.blank? %>
+	<div class="span5">
+		<h3>Others :</h3>
+		<div class="well">
+			<%= simple_format(@profile.workInformations) %>
+		</div>
+	</div>
+	<% end %>
 	<div class="span12">
 		<h3>More about me:</h3>
 		<div class="well">

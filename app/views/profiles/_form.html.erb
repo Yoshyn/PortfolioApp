@@ -118,10 +118,15 @@
 				<%= profile_form.text_area :hobby, :class => "giant_textarea" %>
 			</div>
 		</div>
+		<div class="control-group">
+			<%= profile_form.label :workInformations, :class => "control-label" %>
+			<div class="controls">
+				<%= profile_form.text_area :workInformations, :class => "giant_textarea" %>
+			</div>
+		</div>
 		<div class="actions">
 			<%= profile_form.submit 'Update my profile', :class => "btn btn-danger" %>
 		</div>
 	</div>
 </div>
-
 <% end %>

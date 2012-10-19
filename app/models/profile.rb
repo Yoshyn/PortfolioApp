@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   has_secure_password
   
-  attr_accessible :name, :firstname, :login, :email, :location, :password, :title, :description, :hobby, :git_link, :fb_link,  :twitter_link, :lkdIn_link, :picture_relation_attributes 
+  attr_accessible :name, :firstname, :login, :email, :location, :password, :title, :description, :hobby, :workInformations, :git_link, :fb_link,  :twitter_link, :lkdIn_link, :picture_relation_attributes 
   
   has_one :picture_relation, :as => :parent, :dependent => :destroy
   has_one :picture, :through => :picture_relation

@@ -22,7 +22,7 @@ function remove_picture(link) {
 function add_picture(content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_picture_relation", "g");
-  $('#ImageList').before(content.replace(regexp, new_id));
+  $('#pictures').after(content.replace(regexp, new_id));
 }
 
 function set_avatar(value) {
