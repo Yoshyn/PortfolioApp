@@ -13,7 +13,7 @@
 
 			<span><em class="bullet"></em> Start : <%= experience.start_date %></span>
 			<span><em class="bullet"></em> End : <%= experience.end_date %></span>
-			<% if experience.website.blank? %>
+			<% if !experience.website.blank? %>
 			<span><em class="bullet"></em> Website : <a href="<%= experience.website %>"><%= experience.website %></a></span>
 			<% end %>
 
