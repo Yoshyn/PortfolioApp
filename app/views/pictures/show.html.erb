@@ -17,7 +17,7 @@
 		</p>
 
 		<p>
-			<%= image_tag(@picture.url) if @picture.url.present? %>
+			<%= image_tag(@picture.url, :style => "max-width: 860px;") if @picture.url.present? %>
 		</p>
 
 		<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-danger"  unless !logged_in? %>

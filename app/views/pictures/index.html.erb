@@ -1,5 +1,10 @@
 <%= content_for :active_pictures, "class=active" %>
-
+<% if notice %>
+<div id="notice" class="alert alert-info">
+	<button type="button" class="close" data-dismiss="alert">x</button>
+	<%= notice %>
+</div>
+<% end %>
 <div class="page-header">
 	<h1>Listing pictures</h1>
 </div>
@@ -17,7 +22,7 @@
 		<% @pictures.each do |picture| %>
 		<tr>
 			<td><%= picture.legend %></td>
-			<td><%= image_tag(picture.url, :width => 50) if picture.url.present? %></td>
+			<td><%= image_tag(picture.url, :width => 80) if picture.url.present? %></td>
 			<td><%= link_to 'Show', picture, :class => "btn btn-info" %></td>
 			<td><%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-warning" %></td>
 			<td><%= link_to 'Destroy', picture, confirm: 'Are you sure?', method: :delete , :class => "btn btn-danger" %></td>
